@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include <stdio.h>*/
 
-static int	ft_printf_format(char specifer);
+static int	ft_printf_format(char specifier);
 
 int	ft_printf(const char *format, ...)
 {
@@ -23,23 +23,23 @@ int	ft_printf(const char *format, ...)
 	int		count;
 	int		i;
 
-	count = 0;
+	i = 0;
 	//i = 0;
 	va_start(variadic, format);
-	while (format[count])
+	while (format[i])
 	{
-		if (format[count] == '%')
-			i += ft_printf_format(format[count + 1]);
-		write(1, &format[count], 1);
+		if (format[i] == '%')
+			count += ft_printf_format(format[i + 1]);
+		write(1, &format[i], 1);
 		i++;
 		count++;
 	}
 	va_end(variadic);
 	return (i);
 }
-static int	ft_printf_format(char specifer)
+static int	ft_printf_format(char specifier)
 {
-	if (specifer == 'd' || specifer == 'i')
+	if (specifier == 'd' || specifier == 'i')
 		// putnbr
 }
 /*
