@@ -6,7 +6,7 @@
 /*   By: gscuderi <gscuderi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:05:03 by gscuderi          #+#    #+#             */
-/*   Updated: 2024/02/28 00:19:50 by gscuderi         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:35:17 by gscuderi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
+		{
 			count += ft_printf_format(format[i + 1], variadic);
-		write(1, &format[i], 1);
-		i++;
-		count++;
+			i += 2;
+		}
+		else 
+		{
+			write(1, &format[i], 1);
+			i++;
+			count++;
+		}
 	}
 	va_end(variadic);
 	return (i);
@@ -57,9 +63,7 @@ static int	ft_printf_format(char specifier, va_list variadic)
 	else if (specifier == 'X')
 		count += ft_putnbr_base(va_arg(variadic, int), "0123456789ABCEDF");
 	else if (specifier == 'p')
-		count += ft_putstr_fd(va_arg(variadic, unsigned char*), 1);
-	//putptr ->>>> stampa delle locazioni di memoria con 
-	//printf e vedi come sono. un ptr pesa 4byte
+		count += ft_putptr(va_arg(variadic, unsigned long*), 1);
 	return (count);
 }
 /*

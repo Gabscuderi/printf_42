@@ -3,18 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gscuderi <gscuderi@student.42.fr>          +#+  +:+       +#+         #
+#    By: gscuderi <gscuderi@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/24 15:33:06 by gscuderi          #+#    #+#              #
-#    Updated: 2024/02/24 17:07:38 by gscuderi         ###   ########.fr        #
+#    Updated: 2024/03/01 18:37:37 by gscuderi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-HEADER = printf.h
+HEADER = myprintf.h
 
-SOURCES = ft_putnbr_base.c
+SOURCES =   ft_printf_fd.c \
+			ft_putchar_fd.c\
+			ft_putstr_fd.c\
+			ft_putnbr_fd.c\
+			ft_putnbr_base.c\
+			ft_putptr.c
 
 OBJS = $(SOURCES:.c=.o)
 
@@ -28,7 +33,7 @@ $(NAME) : $(OBJS)
 	${AR} ${NAME} ${OBJS}
 
 %.o : %.c $(HEADER)
-	gcc ${FLAGS} -o $<
+	gcc ${FLAGS} -o $< -c $@
 
 all : $(NAME)
 
