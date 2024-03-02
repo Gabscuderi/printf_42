@@ -6,14 +6,11 @@
 /*   By: gscuderi <gscuderi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:05:03 by gscuderi          #+#    #+#             */
-/*   Updated: 2024/03/02 18:09:34 by gscuderi         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:09:15 by gscuderi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myprintf.h"
-/*#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>*/
 
 static int	ft_printf_format(char specifier, va_list variadic);
 
@@ -68,12 +65,17 @@ static int	ft_printf_format(char specifier, va_list variadic)
 	return (count);
 }
 
-/*
-int main ()
-{
-	int i;
-	i = ft_printf("hola");
-	printf("%d", i);
-	return 0;
-}
-*/
+
+// int main ()
+// {
+// 	int i;
+// 	int j;
+
+// 	j = printf("yo soy %d", 23);
+// 	i = ft_printf("yo soy %d", 23);
+
+// 	printf("%d", j);
+// 	ft_printf("%d", i);
+// 	return 0;
+// }
+
