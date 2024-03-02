@@ -18,10 +18,10 @@ int	ft_putstr_fd(char *str, int fd)
 
 	count = 0;
 	if (!str)
-		count += ft_putstr_fd("null_str", 1);
+		count += ft_putstr_fd("null_str", fd);
 	while (*str)
 	{
-		count += ft_putchar_fd(*str, 1);
+		count += ft_putchar_fd(*str, fd);
 		str++;
 	}
 	return (count);

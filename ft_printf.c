@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gscuderi <gscuderi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gscuderi <gscuderi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:05:03 by gscuderi          #+#    #+#             */
-/*   Updated: 2024/03/01 18:35:17 by gscuderi         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:09:34 by gscuderi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int	ft_printf_format(char specifier, va_list variadic);
 
 int	ft_printf(const char *format, ...)
 {
-	va_list variadic;
+	va_list	variadic;
 	int		count;
 	int		i;
 
 	i = 0;
-	//count = 0;
+	count = 0;
 	va_start(variadic, format);
 	while (format[i])
 	{
@@ -33,7 +33,7 @@ int	ft_printf(const char *format, ...)
 			count += ft_printf_format(format[i + 1], variadic);
 			i += 2;
 		}
-		else 
+		else
 		{
 			write(1, &format[i], 1);
 			i++;
@@ -41,8 +41,9 @@ int	ft_printf(const char *format, ...)
 		}
 	}
 	va_end(variadic);
-	return (i);
+	return (count);
 }
+
 static int	ft_printf_format(char specifier, va_list variadic)
 {
 	int	count;
@@ -51,9 +52,9 @@ static int	ft_printf_format(char specifier, va_list variadic)
 	if (specifier == '%')
 		count += ft_putchar_fd('%', 1);
 	else if (specifier == 'c')
-		count += ft_putchar_fd(va_arg(variadic, char), 1);
+		count += ft_putchar_fd((char)va_arg(variadic, int), 1);
 	else if (specifier == 's')
-		count += ft_putstr_fd(va_arg(variadic, char*), 1);
+		count += ft_putstr_fd(va_arg(variadic, char *), 1);
 	else if (specifier == 'd' || specifier == 'i')
 		count += ft_putnbr_fd(va_arg(variadic, int), 1);
 	else if (specifier == 'u')
@@ -63,9 +64,10 @@ static int	ft_printf_format(char specifier, va_list variadic)
 	else if (specifier == 'X')
 		count += ft_putnbr_base(va_arg(variadic, int), "0123456789ABCEDF");
 	else if (specifier == 'p')
-		count += ft_putptr(va_arg(variadic, unsigned long*), 1);
+		count += ft_putptr(va_arg(variadic, unsigned long *));
 	return (count);
 }
+
 /*
 int main ()
 {
@@ -75,4 +77,3 @@ int main ()
 	return 0;
 }
 */
-

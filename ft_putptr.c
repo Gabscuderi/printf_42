@@ -14,31 +14,29 @@
 
 #include "myprintf.h"
 
-static int	print_nbr(unsigned long nbr, char *Symbols, int base);
+static int	print_nbr(unsigned long nbr);
 
-int	ft_putptr(unsigned long * address)
+int	ft_putptr(unsigned long *address)
 {
-	char	*baseSymbols;
-	int		base;
 	int		count;
 
-	baseSymbols = "0123456789abcdef";
-	base = 16;
 	count = 0;
 	if (address == 0)
 		count += (ft_putstr_fd("nul_str", 1));
 	count += ft_putstr_fd("0x", 1);
-	count += print_nbr(address, baseSymbols, base);
+	count += print_nbr((unsigned long)address);
 	return (count);
 }
 
-static int	print_nbr(unsigned long nbr, char *Symbols, int base)
+static int	print_nbr(unsigned long nbr)
 {
 	int		count;
+	char 	*Symbols;
 
+	Symbols = "0123456789abcdef";
 	count = 0;
-	if (nbr >= base)
-		print_nbr(nbr / base, Symbols, base);
-	count += ft_putchar_fd(Symbols[nbr % base], 1);
+	if (nbr >= 16)
+		print_nbr(nbr / 16);
+	count += ft_putchar_fd(Symbols[nbr % 16], 1);
 	return (count);
 }

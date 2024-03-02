@@ -14,7 +14,6 @@
 
 int	ft_putnbr_fd(long long nbr, int fd)
 {
-	int	digit;
 	int	count;
 
 	count = 0;
@@ -27,8 +26,8 @@ int	ft_putnbr_fd(long long nbr, int fd)
 	}
 	else if (nbr > 9)
 	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
+		count += ft_putnbr_fd(nbr / 10, fd);
+		count += ft_putnbr_fd(nbr % 10, fd);
 	}
 	else
 		count += ft_putchar_fd(nbr + 48, fd);
