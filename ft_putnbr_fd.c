@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_fd(long long nbr, int fd)
 {
@@ -24,12 +24,12 @@ int	ft_putnbr_fd(long long nbr, int fd)
 		count += ft_putchar_fd('-', fd);
 		nbr *= -1;
 	}
-	else if (nbr > 9)
+	if (nbr > 9)
 	{
 		count += ft_putnbr_fd(nbr / 10, fd);
 		count += ft_putnbr_fd(nbr % 10, fd);
 	}
-	else
+	else if(nbr >= 0 && nbr <= 9)
 		count += ft_putchar_fd(nbr + 48, fd);
 	return (count);
 }

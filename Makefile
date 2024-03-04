@@ -6,13 +6,13 @@
 #    By: gscuderi <gscuderi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/24 15:33:06 by gscuderi          #+#    #+#              #
-#    Updated: 2024/03/02 17:40:50 by gscuderi         ###   ########.fr        #
+#    Updated: 2024/03/04 20:47:21 by gscuderi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-HEADER = myprintf.h
+HEADER = ft_printf.h
 
 SOURCES =   ft_printf.c \
 			ft_putchar_fd.c\
@@ -29,6 +29,7 @@ RM = rm -f
 
 AR = ar rcs
 
+
 $(NAME) : $(OBJS)
 	${AR} ${NAME} ${OBJS}
 
@@ -44,5 +45,8 @@ fclean : clean
 	${RM} ${NAME}
 
 re : fclean all
+
+programma : $(NAME)
+	gcc mytest.c -o $@ $(OBJS) -L. -lftprintf
 
 .PHONY: all, clean, fclean, re

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_fd(char *str, int fd)
 {
@@ -18,7 +18,10 @@ int	ft_putstr_fd(char *str, int fd)
 
 	count = 0;
 	if (!str)
-		count += ft_putstr_fd("null_str", fd);
+	{
+		count += ft_putstr_fd("(null)", fd);
+		return (count);
+	}
 	while (*str)
 	{
 		count += ft_putchar_fd(*str, fd);

@@ -6,11 +6,11 @@
 /*   By: gscuderi <gscuderi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:05:03 by gscuderi          #+#    #+#             */
-/*   Updated: 2024/03/02 21:09:15 by gscuderi         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:01:13 by gscuderi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myprintf.h"
+#include "ft_printf.h"
 
 static int	ft_printf_format(char specifier, va_list variadic);
 
@@ -57,25 +57,10 @@ static int	ft_printf_format(char specifier, va_list variadic)
 	else if (specifier == 'u')
 		count += ft_putnbr_fd(va_arg(variadic, unsigned int), 1);
 	else if (specifier == 'x')
-		count += ft_putnbr_base(va_arg(variadic, int), "0123456789abcdef");
+		count += ft_putnbr_base(va_arg(variadic, unsigned int), "0123456789abcdef");
 	else if (specifier == 'X')
-		count += ft_putnbr_base(va_arg(variadic, int), "0123456789ABCEDF");
+		count += ft_putnbr_base(va_arg(variadic, unsigned int), "0123456789ABCDEF");
 	else if (specifier == 'p')
 		count += ft_putptr(va_arg(variadic, unsigned long *));
 	return (count);
 }
-
-
-// int main ()
-// {
-// 	int i;
-// 	int j;
-
-// 	j = printf("yo soy %d", 23);
-// 	i = ft_printf("yo soy %d", 23);
-
-// 	printf("%d", j);
-// 	ft_printf("%d", i);
-// 	return 0;
-// }
-
