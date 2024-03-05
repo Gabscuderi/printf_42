@@ -39,11 +39,13 @@ il file   main.c conterrà il seguente codice:
 #include "ft_printf.h"
 
 int main() {
+
 	int i = 0;
 	int j = 0;
 	j = printf("std:  Il mio nome è %s\n", Gabriele);
 	i = ft_printf("mine: il mio nome è %s\n", Gabriele);
-
 	printf("std:  %d\n", j);
 	ft_printf("mine: %d\n", i);
-	return (0); }
+	return (0);
+
+}
