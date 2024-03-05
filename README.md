@@ -14,22 +14,23 @@ Create a function that reproduces the behavior of the stdio library function "pr
     - va_arg questa è la principale, con cui si riesce a passare un argomento CONSECUTIVO della lista. int i = va_arg(nome_valist, int).
     - va_end: libera memoria allocata.
 
-##testing personale 
+## testing personale 
+
 Per testare la libreria libftprintf.a ed il funzionamento della ft_printf a confronto con printf della stdio.h,
 un modo efficace è di utilizzare un file con il main all'interno della repository, il quale verrà compilato 
 con un comando a parte nel Makefile.
 
 l' header (ft_printf.h) non verrà cambiato, poichè destinato a libftprintf.a 
 lo includiamo in main.c per avere le funzioni di libftprintf.a
-------------------------------------------------------------------------------------------------------------
+
 
 nel makefile basta scrivere questo:
 
-programma : $(NAME)
+programma : $(NAME) 
 	gcc mytest.c -o $@ $(OBJS) -L. -lftprintf
-------------------------------------------------------------------------------------------------------------
 
-il file main.c conterrà il seguente codice:
+
+il file   main.c conterrà il seguente codice:
 
 //per cambiare basta cambiare lo specificatore ed il parametro passato 
 //nelle prime due chiamate di funzione
@@ -37,15 +38,12 @@ il file main.c conterrà il seguente codice:
 #include <stdio.h>
 #include "ft_printf.h"
 
-int main()
-{
-	int i;
-	int j;
-
+int main() {
+	int i = 0;
+	int j = 0;
 	j = printf("std:  Il mio nome è %s\n", Gabriele);
 	i = ft_printf("mine: il mio nome è %s\n", Gabriele);
 
 	printf("std:  %d\n", j);
 	ft_printf("mine: %d\n", i);
-	return (0);
-}
+	return (0); }
