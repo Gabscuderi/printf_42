@@ -46,7 +46,4 @@ fclean : clean
 
 re : fclean all
 
-programma : $(NAME)
-	gcc mytest.c -o $@ $(OBJS) -L. -lftprintf
-
 .PHONY: all, clean, fclean, re
